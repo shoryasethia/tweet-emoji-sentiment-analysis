@@ -1,0 +1,2 @@
+# This file ensures the tweets data directory is tracked in Git
+# Contains Sentiment140 dataset with 1.6M labeled tweets
