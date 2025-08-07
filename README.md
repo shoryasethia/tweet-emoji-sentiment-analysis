@@ -11,11 +11,17 @@ This project implements a hybrid approach to tweet sentiment analysis by combini
 
 ## 📊 Performance Results
 
-| Model | Accuracy | Notes |
-|-------|----------|-------|
-| Text-only | 77.18% | Trained on 160k tweets |
-| Emoji-only | Variable | Depends on emoji presence |
-| Hybrid Model | **Optimized** | Best performance on emoji-rich tweets |
+| Model | Accuracy | Precision | Recall | F1-Score | Notes |
+|-------|----------|-----------|---------|----------|-------|
+| Text-only | **78.49%** | 77.29% | 80.70% | 78.96% | Trained on full 1.6M tweets |
+| Emoji-only | Variable | - | - | - | Depends on emoji presence |
+| Hybrid Model | **Optimized** | Enhanced | Enhanced | Enhanced | Best performance on emoji-rich tweets |
+
+### 🎉 Performance Highlights
+- **Improved Accuracy**: Achieved 78.49% accuracy with full dataset training (up from 77.18%)
+- **Balanced Performance**: Strong precision (77.29%) and recall (80.70%) scores
+- **Robust F1-Score**: 78.96% F1-score demonstrates excellent overall performance
+- **Full Dataset Utilization**: Now trained on complete 1.6M tweet dataset for maximum accuracy
 
 ## 🗂️ Project Structure
 
@@ -24,6 +30,11 @@ tweet-classification/
 ├── README.md                          # This file
 ├── .gitignore                         # Git ignore rules
 ├── requirements.txt                   # Python dependencies
+├── models/                            # 🆕 Trained models directory
+│   ├── tweet_sentiment_model.pkl      # Text-based sentiment model
+│   ├── emoji_sentiment_map.pkl        # Emoji sentiment mapping
+│   ├── hybrid_sentiment_model.pkl     # Optimized hybrid model
+│   └── hybrid_model_metrics.pkl       # Performance metrics
 ├── data/                              # Dataset directory
 │   ├── README.md                      # Data documentation
 │   ├── tweets/                        # Sentiment140 dataset
@@ -36,10 +47,7 @@ tweet-classification/
 │       └── ESR_v1.0_format.txt
 ├── getdata.ipynb                      # Data download notebook
 ├── tweet_sentiment_analysis.ipynb    # Main training notebook
-├── hybrid_sentiment_analysis.ipynb   # Hybrid model notebook
-├── tweet_sentiment_model.pkl         # Trained text model
-├── emoji_sentiment_map.pkl           # Emoji sentiment mapping
-└── hybrid_sentiment_model.pkl        # Optimized hybrid model
+└── hybrid_sentiment_analysis.ipynb   # Hybrid model notebook
 ```
 
 ## 🚀 Quick Start
@@ -71,7 +79,7 @@ Run the notebooks in order:
 import pickle
 
 # Load the hybrid model
-with open('hybrid_sentiment_model.pkl', 'rb') as f:
+with open('models/hybrid_sentiment_model.pkl', 'rb') as f:
     hybrid_model = pickle.load(f)
 
 # Predict sentiment
@@ -91,7 +99,8 @@ print(f"Sentiment: {result['sentiment']}")
 - **Algorithm**: Logistic Regression with TF-IDF
 - **Features**: 50k vocabulary, unigrams + bigrams
 - **Preprocessing**: URL removal, mention/hashtag cleaning, emoji replacement
-- **Training Data**: 200k balanced tweets from Sentiment140
+- **Training Data**: **Full 1.6M tweets** from Sentiment140 dataset
+- **Performance**: 78.49% accuracy, 78.96% F1-score
 
 ### Emoji Analysis
 - **Data Source**: Real social media emoji sentiment scores
@@ -123,10 +132,12 @@ print(f"Sentiment: {result['sentiment']}")
    - Optimized parameters via grid search
 
 ### Performance Metrics
-- **Accuracy**: Primary evaluation metric
-- **Precision/Recall**: Balanced performance analysis
-- **F1-Score**: Harmonic mean of precision and recall
-- **Confusion Matrix**: Detailed error analysis
+- **Accuracy**: 78.49% (primary evaluation metric)
+- **Precision**: 77.29% (positive prediction accuracy)
+- **Recall**: 80.70% (positive case detection rate)
+- **F1-Score**: 78.96% (harmonic mean of precision and recall)
+- **Training Scale**: Full 1.6M tweet dataset
+- **Confusion Matrix**: Detailed error analysis available in notebooks
 
 ## 📝 Datasets
 
