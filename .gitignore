@@ -45,6 +45,11 @@ venv.bak/
 .DS_Store
 Thumbs.db
 
-# Keep data directories but track .gitkeep files
+# Data files (too large for Git)
+data/emoji/*.csv
+data/tweets/*.csv
+data/emoji/*.txt
+
+# Keep directory structure with .gitkeep files
 !data/emoji/.gitkeep
 !data/tweets/.gitkeep
